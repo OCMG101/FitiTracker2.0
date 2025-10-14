@@ -3,7 +3,7 @@ from .models import WorkoutDate, Workout, Exercise
 from .forms import WorkoutDateForm, WorkoutForm, ExerciseFormSet, ExerciseForm
 
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'landing.html')
 
 def log(request):
     if request.method == 'POST':

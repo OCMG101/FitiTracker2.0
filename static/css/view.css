@@ -1,0 +1,238 @@
+
+/* Glassy main container */
+.view-container {
+  backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 28px;
+  box-shadow: 0 10px 40px rgba(0, 200, 83, 0.15);
+  padding: 5rem 6%;
+  margin: 5rem auto;
+  width: 90%;
+  max-width: 95vw;
+  transition: box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.view-container:hover {
+  box-shadow: 0 14px 50px rgba(0, 200, 83, 0.25);
+}
+
+/* 🌱 Header Row */
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  padding: 0 1rem;
+}
+
+.page-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #00c853;
+  text-align: center;
+  flex: 1;
+  letter-spacing: -0.5px;
+}
+
+
+/* 🌸 Sort Menu */
+.sort-container {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0.5rem 0.8rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.sort-container label {
+  font-weight: 700;
+  color: #345d3f;
+  font-size: 0.9rem;
+}
+
+.sort-container select {
+  border: none;
+  background: transparent;
+  padding: 0.4rem 0.8rem;
+  border-radius: 10px;
+  font-weight: 600;
+  color: #1f3b2c;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sort-container select:hover {
+  background: rgba(0, 200, 83, 0.08);
+  color: #00c853;
+}
+
+/* 🧩 Workout Grid */
+.workout-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+/* 🎴 Workout Cards */
+.workout-card {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  padding: 1.8rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: all 0.35s ease;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.workout-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(145deg, rgba(0, 200, 83, 0.13), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.workout-card:hover::before {
+  opacity: 1;
+}
+
+.workout-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+/* 🔖 Card Header */
+.workout-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.workout-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1f4f2f;
+  text-transform: capitalize;
+}
+
+.workout-date {
+  font-size: 0.9rem;
+  color: #547e60;
+  font-weight: 500;
+}
+
+.bi {
+  transition: transform 0.3s ease;
+}
+
+.workout-details.active + .bi {
+  transform: rotate(180deg);
+}
+
+/* 🧾 Details Section */
+.workout-details {
+  display: none;
+  margin-top: 1rem;
+  animation: slideDown 0.4s ease forwards;
+}
+
+.workout-details.active {
+  display: block;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 🧮 Table Styling */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Table Header */
+.table thead th {
+  background: linear-gradient(135deg, rgba(0, 200, 83, 0.15), rgba(255, 255, 255, 0.4));
+  color: #1e4d31;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  padding: 0.75rem;
+  border-bottom: 2px solid rgba(0, 200, 83, 0.2);
+  letter-spacing: 0.03em;
+}
+
+/* Table Rows */
+.table tbody tr {
+  transition: all 0.25s ease;
+}
+
+.table tbody tr:nth-child(even) {
+  background: rgba(240, 255, 240, 0.6);
+}
+
+.table tbody tr:hover {
+  background: rgba(0, 200, 83, 0.08);
+  transform: scale(1.005);
+}
+
+/* Table Cells */
+.table td {
+  padding: 0.75rem;
+  text-align: center;
+  font-weight: 500;
+  color: #2f4d38;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Remove Last Border */
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Smooth Rounded Bottom */
+.table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 12px;
+}
+
+.table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 12px;
+}
+
+/* Optional Glow Accent on Hover */
+.table tbody tr:hover td {
+  color: #00c853;
+}
+
+
+/* ✨ Responsiveness */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 1.6rem;
+  }
+
+  .sort-container {
+    margin-top: 1rem;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .view-container {
+    padding: 3rem 5%;
+  }
+}

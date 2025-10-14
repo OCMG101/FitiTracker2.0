@@ -1,0 +1,101 @@
+/* === FitiTracker Landing Page === */
+
+
+.hero {
+    position: relative;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    border-radius: 28px;
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.1);
+    padding: 6rem 6%;
+    margin: 5rem auto;
+    width: 85%;
+    max-width: 80vw;
+    transition: box-shadow 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hero:hover {
+    box-shadow: 0 14px 40px rgba(16, 185, 129, 0.15);
+}
+
+.hero-left {
+    flex: 1;
+    max-width: 400px;
+}
+
+.hero-logo {
+    font-size: 2.7rem;
+    font-weight: 1000;
+    text-decoration: none;
+    color: #1e293b;
+    display: inline-block;
+}
+
+.hero-logo span {
+    color: #00c853;
+}
+
+.hero-left p {
+    margin-top: 15px;
+    font-size: 1.25rem;
+    font-style: italic;
+    color: #475569;
+}
+
+.hero-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-img {
+    width: 300px;
+    max-width: 80%;
+    filter: drop-shadow(0 0 25px rgba(16, 185, 129, 0.3));
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Buttons */
+.hero-buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 0.8rem 2rem;
+    border-radius: 2rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #10b981;
+    color: white;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: #059669;
+    transform: scale(1.05);
+}
+
+.btn-outline {
+    border: 2px solid #10b981;
+    color: #10b981;
+}
+
+.btn-outline:hover {
+    background-color: #10b981;
+    color: white;
+    transform: scale(1.05);
+}

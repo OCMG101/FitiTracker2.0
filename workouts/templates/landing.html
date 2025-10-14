@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}FitiTracker | Home{% endblock %}
+
+{% block styles %}
+<link href="{% static 'css/landing.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<main class="hero">
+    <div class="hero-left">
+        <a href="{% url 'home' %}" class="hero-logo"><span>Fiti</span>Tracker</a>
+        <p class="tagline">Where every sweat counts.</p>
+
+        <div class="hero-buttons">
+            <a href="{% url 'log' %}" class="btn btn-primary">Log Workouts</a>
+            <a href="{% url 'view' %}" class="btn btn-outline">View Workouts</a>
+        </div>
+    </div>
+
+    <div class="hero-right">
+        <img src="{% static 'images/dumbbell-min.png' %}" alt="dumbbell" class="hero-img">
+    </div>
+</main>
+{% endblock %}

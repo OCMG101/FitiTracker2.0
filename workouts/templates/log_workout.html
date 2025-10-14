@@ -1,133 +1,60 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Monoton&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tilt+Prism&display=swap" rel="stylesheet">
-    <title>FitiTracker</title>
-</head>
-<body>
-    <header>
-        <div class="header-content">
-            <div class="logo">
-             <a href="{% url 'home'%}" class="navtitle"><span>Fiti</span>Tracker</a>
-            </div>
+{% block title %}Log Workout | FitiTracker{% endblock %}
 
-            <div class="menu-icon">
-                <i class="bi bi-list" id="menu" onclick="toggleMenu()" aria-label="Toggle Menu"></i>
-            </div>
+{% block styles %}
+<link href="{% static 'css/log.css' %}" rel="stylesheet">
 
-            <div id="navRight">
-              <a href="{% url 'log'%}" class="nav" id="active">LOG WORKOUT</a>
-              <a href="{% url 'view'%}" class="nav">VIEW WORKOUTS</a>
-            </div> 
+<style>
+/* Optional: simple fade-in animation */
+.exercise-form.fade-in {
+    animation: fadeIn 0.3s ease-in;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="log-container">
+    <h1>Log Your Workout</h1>
+
+    <form method="post" id="workoutForm">
+        {% csrf_token %}
+
+        <!-- Workout Details -->
+        <div class="form-group">
+            <label for="date">Workout Date:</label>
+            {{ date_form.date }}
         </div>
-    </header>
-    
-    <div class="container mt-5">
-        <h1 class="logworkout">Log Your Workout</h1>
-        <form method="post" id="workoutForm">
-            {% csrf_token %}
-            
-            <!-- Workout Date and Name Forms -->
-            <div class="mb-3">
-                <label for="date">Workout Date</label>
-                {{ date_form.date }}
-            </div>
-            <div class="mb-3">
-                <label for="name">Workout Name</label>
-                {{ workout_form.name }}
-            </div>
-            
-            <!-- Exercise Forms -->
-            <h3>Exercises</h3>
-            <div id="exerciseFormset">
-                {{ formset.management_form }}
-                {% for form in formset %}
-                    <div class="card p-3 mb-3 exercise-form">
-                        {{ form.as_p }}
-                        <button type="button" class="btn btn-danger remove-exercise">Remove</button>
-                    </div>
-                {% endfor %}
-            </div>
 
-            <div class="buttons">
-                <!-- Button to Add New Exercise Form -->
-            <button type="button" id="addExercise" class="btn btn-secondary">Add Exercise</button>
-        
-            <!-- Submit Button -->
-            <button type="submit" class="btn btn-primary mt-3">Save Workout</button>
-            </div>
-        
-            
-        </form>
-    </div>
-    
+        <div class="form-group">
+            <label for="name">Workout Name:</label>
+            {{ workout_form.name }}
+        </div>
 
-    <!-- Bootstrap JS (Optional) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <!-- Exercises -->
+        <h3>Exercises</h3>
+        <div id="exerciseFormset">
+            {{ formset.management_form }}
+        </div>
 
-    <script>
-       document.addEventListener("DOMContentLoaded", function () {
-    const formsetContainer = document.getElementById("exerciseFormset");
-    const addExerciseButton = document.getElementById("addExercise");
-    const totalForms = document.getElementById("id_exercises-TOTAL_FORMS");
+        <!-- Input for number of exercises -->
+        <div class="form-buttons">
+            <label for="exerciseCount">Number of Exercises:</label>
+            <input type="number" id="exerciseCount" min="1" placeholder="Enter number" required>
+            <button type="button" id="addExercises" class="add-btn">Generate Forms</button>
+        </div>
 
-    if (!totalForms) {
-        console.error("Error: TOTAL_FORMS field is missing.");
-        return; // Stop the script if TOTAL_FORMS is missing
-    }
+        <div class="submit-button">
+            <button type="submit" class="save-btn">Save Workout</button>
+        </div>
+    </form>
+</main>
 
-    // Add Exercise Button Event Listener
-    addExerciseButton.addEventListener("click", function () {
-        const newFormIndex = totalForms.value;
-
-        // Create a new form for adding an exercise
-        const emptyFormTemplate = `
-            <div class="card p-3 mb-3 exercise-form">
-                <div class="mb-3">
-                    <label for="id_exercises-${newFormIndex}-exercise_name">Exercise Name:</label>
-                    <input type="text" name="exercises-${newFormIndex}-exercise_name" class="form-control" id="id_exercises-${newFormIndex}-exercise_name">
-                </div>
-                <div class="mb-3">
-                    <label for="id_exercises-${newFormIndex}-sets">Sets:</label>
-                    <input type="number" name="exercises-${newFormIndex}-sets" class="form-control" id="id_exercises-${newFormIndex}-sets">
-                </div>
-                <div class="mb-3">
-                    <label for="id_exercises-${newFormIndex}-reps">Reps:</label>
-                    <input type="number" name="exercises-${newFormIndex}-reps" class="form-control" id="id_exercises-${newFormIndex}-reps">
-                </div>
-                <div class="mb-3">
-                    <label for="id_exercises-${newFormIndex}-weight">Weight(kg):</label>
-                    <input type="number" name="exercises-${newFormIndex}-weight" class="form-control" id="id_exercises-${newFormIndex}-weight">
-                </div>
-                <button type="button" class="btn btn-danger remove-exercise">Remove</button>
-            </div>`;
-
-        // Insert the new form at the end of the formset container
-        formsetContainer.insertAdjacentHTML("beforeend", emptyFormTemplate);
-
-        // Update the total number of forms in the management form
-        totalForms.value = parseInt(totalForms.value) + 1;
-    });
-
-    // Event Listener for Removing Exercise Forms
-    formsetContainer.addEventListener("click", function (event) {
-        if (event.target.classList.contains("remove-exercise")) {
-            const exerciseForm = event.target.closest(".exercise-form");
-            exerciseForm.remove();
-
-            // Update the total number of forms in the management form
-            totalForms.value = parseInt(totalForms.value) - 1;
-        }
-    });
-});
-</script>
-<script src="{% static 'script.js' %}"></script>
-</body>
-</html>
+<!-- External JS -->
+<script src="{% static 'js/log.js' %}"></script>
+{% endblock %}

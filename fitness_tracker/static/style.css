@@ -3,249 +3,129 @@ html{
 }
 
 body {
-    font-family: "Poppins", serif;
-    background-image: url("/static/images/gym7.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    color: #ffffff;
-    padding-top: 80px;
-}
-/* Header styling*/
-
-header {
-    background: #00000052;
-    display: block;
-    width: 100%;
-    padding: 15px;
-    top: 0;
-    position: fixed;
-    z-index: 4;
+    background-color: #f8fafc;
+    color: #1e293b;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-header a {
-    padding: 10px;
+/* Hero layout */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8rem 10%;
+    flex-wrap: wrap;
+}
+
+/* Left section */
+.hero-left {
+    flex: 1;
+    max-width: 500px;
+}
+
+.hero-logo {
+    font-size: 2.7rem;
+    font-weight: 700;
     text-decoration: none;
-    color: white;
+    color: #1e293b;
 }
 
-.header-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.hero-logo span {
+    color: #10b981;
 }
 
-.logo {
-    font-size: 2rem;
-    font-weight: 700;
-}
-
-span {
-    color: #01ff40;
-}
-
-.menu-icon {
-    display: none;
-    color: #fff;
-    font-size: 25px;
-}
-
-#navRight {
-    display: flex;
-    font-size: 1.25rem;
-    font-weight: 700;
-    align-items: center;
-    justify-content: space-between;
-}
-
-#navRight a {
-    transition: 0.3s;
-    padding: 0px 15px;
-}
-
-#navRight a:hover {
-    color: #ffffff92;
-}
-
-#navRight a:active {
-    transform: scale(0.7);
-    transition: all 0.3s ease-in;
-}
-
-#active{
-    color: #01ff40;
-}
-
-/* Header responsiveness*/
-
-@media (max-width: 650px) {
-    .menu-icon {
-        display: block;
-    }
-
-    .menu-icon:hover {
-        cursor: pointer;
-    }
-
-    #navRight {
-        background: #121212fa;
-        display: block;
-        text-align: center;
-        position: absolute;
-        top: 76px;
-        left: 0;
-        right: 0;
-        max-height: 300px;
-        overflow: hidden;
-        transition: all 0.4s ease-in-out;
-        z-index: 3;
-    }
-
-    #navRight a {
-        padding: 20px;
-        width: 100%;
-        display: block;
-    }
-    .text{
-        margin-top: 3rem;
-    }
-}
-
-.text{
-    margin-top: 10%;
-    margin-left: 2rem;
-    margin-right: 1rem;
-    display: flex;
-}
-
-p.home{
-    font-size: 4.2rem;
-    font-weight: 700;
+.tagline {
+    font-size: 1.3rem;
+    color: #9ca3af;
+    margin-top: 0.75rem;
     font-style: italic;
-    text-align: center;
-}
-/* Log Workout page*/
-
-h1.logworkout{
-    text-align: center;
-    font-weight: 600;
-    color:#01ff40;
-    margin-bottom: 30px;
-}
-/* General form styling */
-form {
-    background-color: #ffffffe6; /* Light translucent background */
-    border-radius: 8px; /* Rounded corners */
-    padding: 20px;
-    box-shadow: 0px 4px 10px #00000060; /* Subtle shadow for depth */
-}
-
-/* Headings */
-form h1, form h3 {
-    color: #019f30;; /* Bright green for headings */
-    margin-bottom: 15px;
-    text-align: center;
-    font-weight: 600;
-}
-
-/* Labels */
-form label {
-    font-weight: bold;
-    color: #333333;
-    margin-bottom: 5px;
-}
-
-/* Inputs and select elements */
-form input, form select {
-    border: 1px solid #cccccc;
-    border-radius: 8px;
-    padding: 10px;
-    width: 100%;
-    margin-bottom: 15px;
-    font-size: 1rem;
-}
-
-/* Input focus state */
-form input:focus, form select:focus {
-    border-color: #01ff40; 
-    box-shadow: 0 0 5px #01ff40;
-    outline: none;
 }
 
 /* Buttons */
-.buttons{
+.hero-buttons {
+    margin-top: 2rem;
     display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+    gap: 1rem;
 }
 
-form button {
-    padding: 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.btn {
+    text-decoration: none;
+    padding: 0.8rem 2rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
-/* Submit button */
-form button[type="submit"] {
-    background-color: #019f30;; /* Green button */
-    color: #ffffff;
-    border-style: none;
-    padding: 10px;
+.btn-primary {
+    background-color: #10b981;
+    color: white;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
 }
 
-form button[type="submit"]:hover {
-    background-color: #006e21; /* Darker green on hover */
+.btn-primary:hover {
+    background-color: #059669;
+    transform: scale(1.05);
 }
 
-/* Add Exercise button */
-#addExercise {
-    background-color: #007bff; /* Blue button */
-    color: #ffffff;
-    border-style: none;
-    padding: 10px;
+.btn-outline {
+    border: 2px solid #10b981;
+    color: #10b981;
 }
 
-#addExercise:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+.btn-outline:hover {
+    background-color: #10b981;
+    color: white;
+    transform: scale(1.05);
 }
 
-/* Remove button */
-.remove-exercise {
-    background-color: #dc3545; /* Red button */
-    color: #ffffff;
-    width: auto;
+/* Right section */
+.hero-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.remove-exercise:hover {
-    background-color: #a71d2a; /* Darker red on hover */
+.hero-img {
+    width: 320px;
+    max-width: 100%;
+    filter: drop-shadow(0 0 25px rgba(16, 185, 129, 0.3));
+    animation: float 4s ease-in-out infinite;
 }
 
-/* Individual exercise form cards */
-.exercise-form {
-    background-color: #0000000d; 
-    border: 1px solid #ccc; 
-    border-radius: 6px;
-    padding: 15px;
-    margin-bottom: 15px;
-    box-shadow: 0px 2px 5px #0000001a; 
-}
-.exercise-form input, .exercise-form select {
-    border: 1px solid #cccccc;
-    border-radius: 8px;
-    padding: 10px;
-    width: 100%;
-    margin-bottom: 15px;
-    font-size: 1rem;
-}
-.exercise-form input:focus, .exercise-form select:focus {
-    border-color: #01ff40; 
-    box-shadow: 0 0 5px #01ff40;
-    outline: none;
+/* Floating animation */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
 }
 
-.container {
-    margin-top: 30px;
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 1rem 0;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 3rem 5%;
+    }
+
+    .hero-left {
+        margin-top: 2rem;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
 }
 
 

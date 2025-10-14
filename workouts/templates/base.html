@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}FitiTracker{% endblock %}</title>
+
+    <!-- Base/global CSS -->
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- Page-specific CSS -->
+    {% block styles %}{% endblock %}
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <a href="{% url 'home' %}" class="logo"><span>Fiti</span>Tracker</a>
+        <nav class="nav-links">
+            <a href="{% url 'log' %}" class="nav-link">Log Workouts</a>
+            <a href="{% url 'view' %}" class="nav-link">View Workouts</a>
+        </nav>
+    </header>
+
+    <!-- Main Page Content -->
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        © 2025 FitiTracker. Built with sweat and code.
+    </footer>
+
+    <script src="{% static 'js/log.js' %}"></script>
+</body>
+</html>
