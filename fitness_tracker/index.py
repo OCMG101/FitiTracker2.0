@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 def home(request):
-    return render(request, 'landing.html')
+    return render(request, 'home.html')
 
 def log(request):
     return render(request, 'log_workout.html')

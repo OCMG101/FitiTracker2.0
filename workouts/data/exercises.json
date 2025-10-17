@@ -1,0 +1,41 @@
+{
+  "Chest": [
+    "Flat Barbell Bench Press",
+    "Flat Dumbbell Bench Press",
+    "Incline Barbell Bench Press",
+    "Incline Dumbbell Press",
+    "Chest Fly",
+    "Push-up"
+  ],
+  "Back": [
+    "Pull-up",
+    "Barbell Row",
+    "T-Bar Row",
+    "Lat Pulldown",
+    "Deadlift"
+  ],
+  "Legs": [
+    "Squat",
+    "Leg Press",
+    "Romanian Deadlift",
+    "Leg Extensions",
+    "Leg Curls",
+    "Lunges",
+    "Calf Raises"
+  ],
+  "Shoulders": [
+    "Overhead Press",
+    "Lateral Raise",
+    "Front Raise",
+    "Arnold Press"
+  ],
+  "Arms": [
+    "Barbell Curl",
+    "Preacher Curl",
+    "Dumbbell Curl",
+    "Hammer Curl",
+    "Overhead Extension",
+    "Tricep Pushdown",
+    "Skull Crusher"
+  ]
+}

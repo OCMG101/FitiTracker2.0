@@ -3,32 +3,17 @@
 
 {% block title %}Log Workout | FitiTracker{% endblock %}
 
-{% block styles %}
-<link href="{% static 'css/log.css' %}" rel="stylesheet">
-
-<style>
-/* Optional: simple fade-in animation */
-.exercise-form.fade-in {
-    animation: fadeIn 0.3s ease-in;
-}
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-</style>
-{% endblock %}
-
 {% block content %}
+<link href="{% static 'css/log.css' %}" rel="stylesheet">
 <main class="log-container">
     <h1>Log Your Workout</h1>
 
     <form method="post" id="workoutForm">
         {% csrf_token %}
-
-        <!-- Workout Details -->
         <div class="form-group">
             <label for="date">Workout Date:</label>
             {{ date_form.date }}
+        </div>
         </div>
 
         <div class="form-group">
@@ -36,16 +21,17 @@
             {{ workout_form.name }}
         </div>
 
-        <!-- Exercises -->
-        <h3>Exercises</h3>
-        <div id="exerciseFormset">
-            {{ formset.management_form }}
+        <div class="form-group">
+            <label for="template">Or Load Saved Workout:</label>
+            <button type="button" id="loadTemplateBtn">Load</button>
         </div>
 
-        <!-- Input for number of exercises -->
+        <h3>Exercises</h3>
+        <div id="exerciseFormset">{{ formset.management_form }}</div>
+
         <div class="form-buttons">
             <label for="exerciseCount">Number of Exercises:</label>
-            <input type="number" id="exerciseCount" min="1" placeholder="Enter number" required>
+            <input type="number" id="exerciseCount" min="1" required>
             <button type="button" id="addExercises" class="add-btn">Generate Forms</button>
         </div>
 
@@ -55,6 +41,5 @@
     </form>
 </main>
 
-<!-- External JS -->
 <script src="{% static 'js/log.js' %}"></script>
 {% endblock %}
